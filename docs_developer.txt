@@ -1,0 +1,6 @@
+untuk insert data ke database dengan nodejs lakukan
+1.npm init -y 
+untuk membuat package.json tentang informasi project
+2.npm install mysql2
+untuk berinteraksi dengan DB 
+3.npm install express

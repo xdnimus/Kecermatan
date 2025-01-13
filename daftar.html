@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EHEHE</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="style/styles_daftar.css" />
+    <header>
+      <div class="header_container">
+        <div class="logo">
+          <p>Nusantara</p>
+        </div>
+        <nav>
+          <a href="#">Dashboard</a>
+          <a href="daftar.html">Registrasi</a>
+          <a href="#">Langganan</a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <h2>Registrasi</h2>
+      <p>Selamat datang! Silakan isi formulir di bawah ini:</p>
+      <form class="form">
+        <div class="form-group">
+          <label for="nama_lengkap"
+            >Nama Lengkap <span class="red_star">*</span></label
+          >
+          <input
+            type="text"
+            id="nama_lengkap"
+            name="nama_lengkap"
+            placeholder="Masukkan Nama Lengkap"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="provinsi">Provinsi <span class="red_star">*</span></label>
+          <input
+            type="text"
+            id="provinsi"
+            name="provinsi"
+            placeholder="Masukkan Provinsi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="kabupaten_kota"
+            >Kabupaten/Kota <span class="red_star">*</span></label
+          >
+          <input
+            type="text"
+            id="kabupaten_kota"
+            name="kabupaten_kota"
+            placeholder="Masukkan Kabupaten"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="kecamatan">Kecamatan</label>
+          <input
+            type="text"
+            id="kecamatan"
+            name="kecamatan"
+            placeholder="Masukkan Kecamatan"
+          />
+        </div>
+        <div class="form-group">
+          <label for="alamat">Alamat</label>
+          <input
+            type="text"
+            id="alamat"
+            name="alamat"
+            placeholder="Masukkan Alamat"
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">Username <span class="red_star">*</span></label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Masukkan Username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email <span class="red_star">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Masukkan Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="no_whatsapp"
+            >No Whatsapp Aktif <span class="red_star">*</span></label
+          >
+          <input
+            type="tel"
+            id="no_whatsapp"
+            name="no_whatsapp"
+            placeholder="Masukkan No Whatsapp"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password <span class="red_star">*</span></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Masukkan Password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="ulangi_password"
+            >Ulangi Password <span class="red_star">*</span></label
+          >
+          <input
+            type="password"
+            id="ulangi_password"
+            name="ulangi_password"
+            placeholder="Masukkan Password"
+            required
+          />
+        </div>
+        <button type="submit">Daftar</button>
+      </form>
+      <p class="tag_login">
+        Sudah Memiliki akun? Masuk disini
+        <span><a href="login.html">login</a></span>
+      </p>
+    </div>
+    <footer>
+      <div class="footer_container">
+        <p>&copy; 2025 All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script>
+      const form = document.querySelector(".form");
+      form.addEventListener("submit", (event) => {
+        console.log("Form submitted");
+        event.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const password = document.getElementById("password").value;
+        const ulangi_password =
+          document.getElementById("ulangi_password").value;
+
+        if (password !== ulangi_password) {
+          alert("Password dan Ulangi Password tidak cocok.");
+          return; // Stop form submission
+        }
+
+        console.log("Data SEBELUM dikirim:", data);
+        fetch("http://localhost:3000/simpan_data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "success") {
+              alert("Data berhasil disimpan!");
+              form.reset();
+            } else {
+              alert("Terjadi kesalahan: " + data.message);
+              console.error(data.message);
+            }
+          })
+          .catch((error) => {
+            alert("Terjadi kesalahan jaringan.");
+            console.error("Error:", error);
+          });
+      });
+    </script>
+  </body>
+</html>

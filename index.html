@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kecermatan</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="style/styles.css" />
+    <h1>tes Kecermatan Polri</h1>
+
+    <div class="parameter">
+      <p class="var-tebak" id="var1">A</p>
+      <p class="var-tebak" id="var2">V</p>
+      <p class="var-tebak" id="var3">X</p>
+      <p class="var-tebak" id="var4">R</p>
+      <p class="var-tebak" id="var5">U</p>
+    </div>
+
+    <div class="container">
+      <p class="kotak" id="ktk1">A</p>
+      <p class="kotak" id="ktk2">V</p>
+      <p class="kotak" id="ktk3">X</p>
+      <p class="kotak" id="ktk4">R</p>
+    </div>
+
+    <div class="pilgan">
+      <button
+        class="pilgan-konten"
+        data-jawaban="A"
+        onclick="pilgan(this.dataset.jawaban)"
+      >
+        A
+      </button>
+      <button
+        class="pilgan-konten"
+        data-jawaban="V"
+        onclick="pilgan(this.dataset.jawaban)"
+      >
+        B
+      </button>
+      <button
+        class="pilgan-konten"
+        data-jawaban="X"
+        onclick="pilgan(this.dataset.jawaban)"
+      >
+        C
+      </button>
+      <button
+        class="pilgan-konten"
+        data-jawaban="R"
+        onclick="pilgan(this.dataset.jawaban)"
+      >
+        D
+      </button>
+      <button
+        class="pilgan-konten"
+        data-jawaban="U"
+        onclick="pilgan(this.dataset.jawaban)"
+      >
+        E
+      </button>
+    </div>
+
+    <div class="container_start">
+      <button class="start" onclick="back()">Back</button>
+    </div>
+    <h1 id="test()"></h1>
+
+    <script src="script/scripts.js"></script>
+  </body>
+</html>

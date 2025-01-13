@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      const harihari = [
+        "minggu",
+        "senin",
+        "selasa",
+        "rabu",
+        "kamis",
+        "jumat",
+        "sabtu",
+      ];
+      let hari = new Date().getDay();
+      console.log(hari);
+      //harihari[2] menggunakan parameter [2] sebagai inisialisasi yg akan digunakan di kondisi
+      if ((hari = harihari[2])) {
+        hari = "rabu";
+      }
+
+      const token = [Math.random() * 1];
+      console.log(`tokennya adalah : ${token}`);
+
+      console.log(`ini adalah hari ${hari}`);
+    </script>
+  </body>
+</html>
